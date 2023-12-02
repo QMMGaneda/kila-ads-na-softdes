@@ -1,0 +1,628 @@
+@import url('https://fonts.googleapis.com/css2?family=Bayon&family=Bebas+Neue&family=Poppins&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.logo {
+  width: 120px;
+  cursor: pointer;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul li {
+  margin: 0 30px;
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Poppins";
+  font-weight: 500;
+}
+
+.navbar ul li a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: red;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+}
+
+.navbar ul li a:hover:after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* END OF NAVBAR */
+
+/* BACK TO TOP */
+.BackToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
+  background: transparent;
+  border-radius: 8px;
+  padding: 10px;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.BackToTop span {
+  color: white;
+  font-size: 25px;
+  transition: 0.2s ease-in-out;
+}
+
+.BackToTop:hover {
+  border: 2px solid white;
+}
+
+.BackToTop span:hover {
+  color: red;
+  transform: translateY(-5px);
+}
+
+/* END OF BACK TO TOP */
+
+/* HOME SECTION */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(./Components/Images/Background.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.content img {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  width: 20%;
+  height: 15%;
+}
+
+.content p {
+  margin: 15px;
+  font-size: 35px;
+  font-family: "Bebas Neue";
+  text-transform: uppercase;
+  color: white;
+  justify-content: center;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: -15px;
+}
+
+.buttonContainer button {
+  width: 180px;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Bayon', sans-serif;
+  font-size: 20px;
+  padding: 15px 0;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  border: 2px solid red;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.buttonContainer button:hover {
+  background-color: black;
+  border: 2px solid white;
+  color: red;
+}
+
+/* END OF HOME */
+
+/* ABOUT */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(./Components/Images/Aboutus_bg.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Style the radio buttons and labels */
+input[type="radio"] {
+  display: none;
+}
+
+.page-label {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 20px;
+  padding: 5px;
+  background: transparent;
+  position: relative;
+}
+
+.page-label img {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  margin-left: 95px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.page-label img:hover {
+  transform: scale(1.5);
+  border: 2px solid red;
+}
+
+/* Style the content sections */
+.about-page {
+  display: none;
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  text-align: justify;
+  font-weight: 900;
+}
+
+/* Show the content section when the corresponding radio button is checked */
+#page1:checked ~ #page1-content,
+#page2:checked ~ #page2-content,
+#page3:checked ~ #page3-content {
+  display: block;
+}
+
+.image-slider {
+  width: 40%;
+  height: 65%;
+  position: absolute;
+  top: 150px;
+  left: 975px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.image-slider img {
+  border-radius: 15px;
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s;
+  animation: imageSlider 10s infinite;
+}
+
+.active {
+  opacity: 1;
+}
+
+@keyframes imageSlider1 {
+  0%,
+  15% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  15%,
+  25% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes imageSlider2 {
+  0%,
+  30% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  35%,
+  45% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes imageSlider3 {
+  0%,
+  50% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  55%,
+  65% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes imageSlider4 {
+  0%,
+  70% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  75%,
+  85% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.slider-image:nth-child(1) {
+  animation: imageSlider1 15s infinite;
+}
+
+.slider-image:nth-child(2) {
+  animation: imageSlider2 15s infinite;
+}
+
+.slider-image:nth-child(3) {
+  animation: imageSlider3 15s infinite;
+}
+
+.slider-image:nth-child(4) {
+  animation: imageSlider4 15s infinite;
+}
+
+.about-section .text-section {
+  margin-top: 111px;
+  margin-left: 100px;
+  position: relative;
+}
+
+.about-section .text-section h1 {
+  margin-top: 200px;
+  margin-left: 100px;
+  font-size: 91px;
+  font-family: "Bebas Neue";
+  line-height: 50px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.about-section .text-section h1 span {
+  font-size: 91px;
+  font-family: "Bebas Neue";
+  text-transform: uppercase;
+  color: red;
+}
+
+.about-section .text-section p {
+  margin-top: 35px;
+  margin-left: 100px;
+  font-size: 16px;
+  font-family: "Poppins";
+  line-height: 20px;
+  text-transform: uppercase;
+  color: white;
+  width: 35%;
+  text-align: justify;
+  font-weight: 300;
+}
+
+.about-section .about-image {
+  position: absolute;
+  top: 150px;
+  right: 200px;
+  width: 20%;
+  height: 65%;
+}
+
+.about-section .text-section .map-icon {
+  position: absolute;
+  margin-top: 35px;
+  bottom: -60px;
+  left: 95px;
+}
+
+.map-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.about-section .buttonforNextAboutSection {
+  display: flex;
+  margin-top: 150px;
+  margin-left: 190px;
+}
+
+.about-section .buttonforNextAboutSection button {
+  width: 80px;
+  padding: 5px 5px;
+  text-align: center;
+  margin: 10px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  border: 2px solid red;
+  background: transparent;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Bayon';
+  font-size: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+.about-section .buttonforNextAboutSection button:hover {
+  background-color: black;
+  border: 2px solid white;
+  color: red;
+}
+/* END OF ABOUT */
+
+/* RATE */
+.rates-section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(./Components/Images/RatesBackgroud.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.header h1 {
+  font-family: "Bebas Neue";
+  font-size: 82px;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.line {
+  width: 480px;
+  height: 5px;
+  border-radius: 15px;
+  background-color: white;
+  margin: -50px auto;
+}
+
+.header h1 span {
+  font-family: "Bebas Neue";
+  font-size: 82px;
+  color: red;
+}
+
+.rateContainer {
+  display: grid;
+  place-items: center;
+}
+
+.cardContainer {
+  display: grid;
+  row-gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.cardArticle {
+  position: relative;
+  margin: 15px;
+  margin-top: 150px;
+}
+
+.Title {
+  border: 3px solid red;
+  border-radius: 15px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  font-family: "Bebas Neue";
+  font-weight: 500;
+  font-size: 30px;
+  transition: 0.2s ease-in-out;
+}
+
+.Title:hover {
+  border: 5px solid white;
+  font-size: 32px;
+  color: red;
+}
+
+.cardData {
+  background-color: black;
+  border: 3px solid white;
+  color: red;
+  width: 60px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 5px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.cardDescription {
+  font-size: 20px;
+  font-family: "Poppins";
+}
+
+.cardArticle:hover .cardData {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.cardArticle:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+@keyframes show-data {
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(1.5px);
+  }
+}
+
+.buttonforRateSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.buttonforRateSection button {
+  width: 80px;
+  padding: 5px 5px;
+  text-align: center;
+  margin: 10px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  border: 2px solid red;
+  background: transparent;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Bayon';
+  font-size: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+.buttonforRateSection button:hover {
+  border: 2px solid white;
+  color: red;
+}
+/* END OF RATE */
+
+/* PROFILE */
+.profile-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(./Components/Images/ProfileBackground.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.box {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px;
+  border-radius: 15px;
+}
+
+.form-box {
+  width: 450px;
+  margin: 0px 5px;
+}
+
+.form-box header {
+  font-size: 25px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  color: black;
+  border-bottom: 1px solid red;
+  margin-bottom: 10px;
+}
+
+.form-box .links, a {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins";
+  color: black;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  justify-content: space-evenly;
+}
+
+.form-box .links a {
+  text-decoration: none;
+  color: red;
+  display: flex;
+}
+/* END OF PROFILE */
